@@ -10,6 +10,8 @@ def intersection(arrays):
   ## if key is found, increment value by 1
   ## if key = len(arrays), add to result
   ## profit?
+
+  
   # print('we in intersection')
   # print(arrays)
   for smolArray in arrays:
@@ -23,7 +25,7 @@ def intersection(arrays):
         ### how do i get the KEEEEY --- I am not a smart lass
         result.append(number)
         # print(number)
-  print(result)
+  # print(result)
   return result
 
 
