@@ -16,8 +16,10 @@ def intersection(arrays):
         arrayDict[number] = 1
       arrayDict[number] += 1
       if arrayDict[number] == numbArrays:
-        ### how do i get the KEEEEY
-        print('this passed')
+        ### how do i get the KEEEEY --- I am not a smart lass
+        result.append(number)
+        # print(number)
+        # print('this passed')
 
 
   return result
