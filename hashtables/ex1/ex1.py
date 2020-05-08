@@ -6,7 +6,11 @@ def get_indices_of_item_weights(weights, length, limit):
   index = 0
   ## generating the dictionary
   for wt in weights:
-    weight_dict[wt] = index
+    if wt in weight_dict:
+      save = weight_dict[wt]
+      weight_dict[wt] = [save, index]
+    else:
+      weight_dict[wt] = index
     index = index +1
 
   print(weight_dict)
@@ -22,6 +26,10 @@ def get_indices_of_item_weights(weights, length, limit):
     print('limit,wt,keycheck', limit, wt, key_check)
     if key_check in weight_dict:
       print('we in here?')
+      if isinstance(weight_dict[wt],list):
+        print('check this garbage',weight_dict[wt][0])
+        result.append(weight_dict[wt][1])
+        result.append(weight_dict[wt][0])
       if weight_dict[wt] > weight_dict[key_check]:
         print('we in true?')
         result.append(weight_dict[wt])
