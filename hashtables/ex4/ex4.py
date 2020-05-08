@@ -16,10 +16,10 @@ def has_negatives(a):
   for key in numb_dict:
     if key < 0:
       if numb_dict[-key]:
-        result.append(key)
+        result.append(-key)
  
   return result
 
 
-if __name__ == "__main__":
-  print(has_negatives([-1,-2,1,2,3,4,-4]))
+# if __name__ == "__main__":
+#   print(has_negatives([-1,-2,1,2,3,4,-4]))
