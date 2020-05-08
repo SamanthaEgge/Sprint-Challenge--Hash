@@ -8,25 +8,35 @@ def get_indices_of_item_weights(weights, length, limit):
   for wt in weights:
     weight_dict[wt] = index
     index = index +1
-    print(index)
+
+  print(weight_dict)
 
   ## mathing according to hints
   if length == 1:
     result = None
     return result
   for wt in weight_dict:
-    print('limit', limit)
-    print('wt', wt)
-    if weight_dict[limit-wt]:
-      print(weight_dict[limit-wt])
-      if weight_dict[wt] > weight_dict[limit-wt]:
+    # print('limit', limit)
+    # print('wt', wt)
+    key_check = limit-wt
+    print('limit,wt,keycheck', limit, wt, key_check)
+    if key_check in weight_dict == True:
+      print('we in here?')
+      if weight_dict[wt] > weight_dict[key_check]:
+        print('we in true?')
         result.append(weight_dict[wt])
-        result.append(weight_dict[limit-wt])
+        result.append(weight_dict[key_check])
+        return result
       else:
-        result.append(weight_dict[limit-wt])
+        print('we in true2?')
+        result.append(weight_dict[key_check])
         result.append(weight_dict[wt])
+        return result
 
   if len(result) == 0:
     result = None
+
+
+  print(weight_dict[6])
 
   return result
