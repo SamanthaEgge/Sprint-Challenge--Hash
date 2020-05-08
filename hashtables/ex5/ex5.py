@@ -22,62 +22,6 @@
 #       if file_dict[file] == check:
 #         result.append(file)
 
-#   return result
-
-class LinkedDictNode:
-  def __init__(self, file, prev=None, next=None):
-    self.file = file
-    self.prev = prev
-    self.next = next
-
-  def insert_after(self, value):
-    current_next = self.next
-    self.next = LinkedDictNode(value, self, current_next)
-    if current_next:
-      current_next.prev = self.next
-
-  def insert_before(self, value):
-    current_prev = self.prev
-    self.prev = LinkedDictNode(value, current_prev, self)
-    if current_prev:
-      current_prev.next = self.prev
-
-  def delete(self):
-    if self.prev:
-      self.prev.next = self.next
-    if self.next:
-      self.next.prev = self.prev
-
-class DoublyLinkedDict:
-  def __init__(self, node=None):
-    self.head = node
-    self.tail = node
-    self.length = 1 if node is not None else 0
-
-  def __len__(self):
-    return self.length
-
-  def add_to_head(self, value):
-    new_node = LinkedDictNode(value)
-    self.length += 1
-    if not self.head and not self.tail:
-      self.head = new_node
-      self.tail = new_node
-    else:
-      new_node.next = self.head
-      self.head.prev = new_node
-      self.head = new_node
-
-  def add_to_tail(self, value):
-    new_node = LinkedDictNode(value)
-    self.length += 1
-    if not self.head and not self.tail:
-      self.head = new_node
-      self.tail = new_node
-    else:
-      new_node.prev = self.tail
-      self.tail.next = new_node
-      self.tail = new_node
 
 def finder(files, queries):
   result = []
@@ -92,20 +36,21 @@ def finder(files, queries):
     file_split = file.rsplit('/', 1)
     ## this is checking if file name already exists in dictionary
     if file_split[1] in file_dict:
-      print(file_dict[file_split[1]])
-      file_dict[file_split[1]].add_to_tail(file)
+      file_dict[file_split[1]].append(file)
     else:
-      ## create new linked list, starting with this filepath
-      file_dict[file_split[1]] = DoublyLinkedDict(file)
+      ## create new list
+      file_dict[file_split[1]] = [file]
   
-  print(file_dict)
+  # print(file_dict)
 
   ## For each query, check to see if that file exists.
   # if so, append each filename to the result
 
   for query in queries:
     if query in file_dict:
-      
+      ## Need some sort of loop or map to go over each value in file_dict[query] then append it to results
+      for paths in file_dict[query]:
+        result.append(paths)
 
   return result
 
@@ -117,7 +62,8 @@ def finder(files, queries):
 #   files = [
 #     '/bin/foo',
 #     '/bin/bar',
-#     '/usr/bin/baz'
+#     '/usr/bin/baz',
+#     '/usr/foo'
 #   ]
 #   queries = [
 #     "foo",
