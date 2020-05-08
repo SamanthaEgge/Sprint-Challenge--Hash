@@ -16,14 +16,14 @@ def reconstruct_trip(tickets, length):
   ### Search ticket dict keys for prev value, add value to route array
   ### loop until destination is none
   
-  ### Build route Dict
+  ### Build route dictionary
   for path in tickets:
     route_dict[path.source] = path.destination
   
-  print(route_dict)
+  # print(route_dict)
 
-  ## W
-  while len(route) < length-1:
+  ## Start building the route, and until route is appropriate length, keep searching for the next spot
+  while len(route) < length:
 
     ## Grabbing start location
     if len(route) == 0:
@@ -32,7 +32,7 @@ def reconstruct_trip(tickets, length):
     #Based upon previous location, add next location
     route.append(route_dict[route[len(route)-1]])    
 
-  print(route)
+  print('hello, this is route',route)
 
   return route
 
