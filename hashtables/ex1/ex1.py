@@ -20,7 +20,7 @@ def get_indices_of_item_weights(weights, length, limit):
     # print('wt', wt)
     key_check = limit-wt
     print('limit,wt,keycheck', limit, wt, key_check)
-    if key_check in weight_dict == True:
+    if weight_dict[int(key_check)]:
       print('we in here?')
       if weight_dict[wt] > weight_dict[key_check]:
         print('we in true?')
@@ -37,6 +37,6 @@ def get_indices_of_item_weights(weights, length, limit):
     result = None
 
 
-  print(weight_dict[6])
+  print('can access weight_dict', weight_dict[6])
 
   return result
